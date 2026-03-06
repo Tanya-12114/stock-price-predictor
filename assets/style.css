@@ -1,0 +1,112 @@
+/* ── Hide Streamlit chrome ───────────────────────────────────────────────── */
+#MainMenu, footer, header { visibility: hidden; }
+.block-container {
+    padding-top: 1.8rem !important;
+    padding-bottom: 2rem !important;
+    max-width: 1200px;
+}
+
+/* ── Sidebar ─────────────────────────────────────────────────────────────── */
+[data-testid="stSidebar"] {
+    background-color: #0f172a !important;
+}
+[data-testid="stSidebar"] section > div {
+    padding-top: 1.2rem;
+}
+[data-testid="stSidebar"] label,
+[data-testid="stSidebar"] p,
+[data-testid="stSidebar"] span,
+[data-testid="stSidebar"] div {
+    color: #cbd5e1 !important;
+}
+[data-testid="stSidebar"] .stTextInput input {
+    background: #1e293b !important;
+    border: 1px solid #334155 !important;
+    border-radius: 6px !important;
+    color: #f1f5f9 !important;
+}
+[data-testid="stSidebar"] .stSelectbox > div > div {
+    background: #1e293b !important;
+    border: 1px solid #334155 !important;
+    color: #f1f5f9 !important;
+}
+[data-testid="stSidebar"] .stDateInput input {
+    background: #1e293b !important;
+    border: 1px solid #334155 !important;
+    color: #f1f5f9 !important;
+}
+[data-testid="stSidebar"] hr {
+    border-color: #1e293b !important;
+}
+
+/* ── Metric cards ────────────────────────────────────────────────────────── */
+[data-testid="stMetric"] {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 1rem 1.1rem 0.9rem !important;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+[data-testid="stMetricLabel"] > div {
+    font-size: 0.72rem !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.06em !important;
+    color: #94a3b8 !important;
+}
+[data-testid="stMetricValue"] {
+    font-size: 1.25rem !important;
+    font-weight: 700 !important;
+    color: #0f172a !important;
+}
+[data-testid="stMetricDelta"] svg { display: none; }
+[data-testid="stMetricDelta"] > div {
+    font-size: 0.78rem !important;
+    font-weight: 500 !important;
+}
+
+/* ── Tabs ────────────────────────────────────────────────────────────────── */
+[data-testid="stTabs"] [role="tablist"] {
+    gap: 0;
+    border-bottom: 2px solid #e2e8f0;
+    background: transparent;
+}
+[data-testid="stTabs"] button[role="tab"] {
+    font-size: 0.78rem !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.06em !important;
+    color: #94a3b8 !important;
+    padding: 0.7rem 1.2rem !important;
+    border-radius: 0 !important;
+    border-bottom: 2px solid transparent !important;
+    margin-bottom: -2px !important;
+    background: transparent !important;
+}
+[data-testid="stTabs"] button[role="tab"][aria-selected="true"] {
+    color: #0f172a !important;
+    border-bottom-color: #3b82f6 !important;
+    background: transparent !important;
+}
+
+/* ── Headings ────────────────────────────────────────────────────────────── */
+h2 {
+    font-size: 1.6rem !important;
+    font-weight: 700 !important;
+    color: #0f172a !important;
+    margin-bottom: 0 !important;
+    letter-spacing: -0.3px !important;
+}
+
+/* ── Divider ─────────────────────────────────────────────────────────────── */
+hr {
+    border-color: #e2e8f0 !important;
+    margin: 0.8rem 0 !important;
+}
+
+/* ── Dataframe ───────────────────────────────────────────────────────────── */
+[data-testid="stDataFrame"] {
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 8px !important;
+    overflow: hidden !important;
+}
