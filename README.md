@@ -1,42 +1,55 @@
-# Stock Price Prediction Dashboard
+# 📈 Stock Price Prediction App
 
-A modular Streamlit application for market data analysis and ML-based price forecasting.
+A **Stock Price Prediction Web App** built using **Python** and **Streamlit** that allows users to visualize stock data and predict the next day's stock price using a machine learning model.
 
-## Project Structure
+The app fetches historical stock data using **yfinance** and trains a machine learning model using **scikit-learn**.
 
-```
-stock_predictor/
-├── app.py                   # Entry point
-├── requirements.txt
-├── assets/
-│   └── style.css            # Global styles
-├── utils/
-│   ├── data.py              # Data fetching & feature engineering
-│   └── model.py             # Model training & forecasting
-└── components/
-    ├── sidebar.py           # Configuration panel
-    ├── metrics.py           # KPI strip
-    └── charts.py            # All Plotly chart builders
-```
+---
 
-## Setup & Run
+## 🚀 Features
+
+- 📊 Fetch historical stock data
+- 📈 Visualize stock closing prices
+- 🤖 Train a machine learning model
+- 🔮 Predict the next day's stock price
+- 🌐 Interactive web interface
+- ⚡ Built with Streamlit for fast deployment
+
+---
+
+## 🛠️ Tech Stack
+
+- Python  
+- Streamlit  
+- pandas  
+- numpy  
+- matplotlib  
+- scikit-learn  
+- yfinance  
+
+
+---
+
+## ⚙️ Installation
+
+### Clone the repository:
 
 ```bash
-# 1. Install dependencies
-pip install -r requirements.txt
+git clone https://github.com/yourusername/stock-price-prediction-app.git
+cd stock-price-prediction-app
+```
+### Install dependencies:
 
-# 2. Launch the app
+```bash
+pip install -r requirements.txt
+```
+### Start the Streamlit server:
+
+```bash
 streamlit run app.py
 ```
+### The app will open in your browser at:
 
-## Features
-
-- Live OHLCV data via Yahoo Finance
-- Two ML models: Linear Regression and Random Forest
-- Three analysis tabs: Historical, Model Performance, Forecast
-- Configurable test split, forecast horizon, and chart overlays
-- Confidence band on forecasts (±1 RMSE)
-
-## Disclaimer
-
-For educational and research purposes only. Not financial advice.
+```bash
+http://localhost:8501
+```
