@@ -3,11 +3,16 @@ Stock Price Prediction Dashboard — Entry Point
 """
 
 import streamlit as st
-from utils.data import fetch_data, add_features
+from utils.data import fetch_data, fetch_peers, add_features
 from utils.model import train_model, forecast_future
 from components.sidebar import render_sidebar
 from components.metrics import render_metrics
-from components.charts import render_historical, render_prediction, render_forecast
+from components.charts import (
+    render_historical,
+    render_prediction,
+    render_forecast,
+    render_peers,
+)
 
 st.set_page_config(
     page_title="Stock Price Predictor",
@@ -62,18 +67,27 @@ df_feat = add_features(df_raw)
 
 with st.spinner("Training model…"):
     model, scaler, y_test, y_pred, split, metrics = train_model(
-        df_feat,
-        cfg["model_choice"],
-        cfg["test_split"]
+        df_feat, cfg["model_choice"], cfg["test_split"]
     )
 
 future_dates, future_preds = forecast_future(df_feat, model, scaler, cfg["forecast_days"])
 
+# ── Peers ─────────────────────────────────────────────────────────────────────
+peers_data = {}
+if cfg["peers"]:
+    with st.spinner("Loading peer data…"):
+        peers_data = fetch_peers(cfg["peers"], cfg["start_date"], cfg["end_date"])
+
 # ── Tabs ──────────────────────────────────────────────────────────────────────
-tab1, tab2, tab3 = st.tabs(["  Historical Analysis  ", "  Model Performance  ", "  Price Forecast  "])
+tab_labels = ["  Historical Analysis  ", "  Model Performance  ", "  Price Forecast  ", "  Peer Comparison  "]
+tab1, tab2, tab3, tab4 = st.tabs(tab_labels)
 
 with tab1:
-    render_historical(df_raw, cfg["ticker"], cfg["show_ma"], cfg["show_volume"])
+    render_historical(
+        df_raw, cfg["ticker"],
+        cfg["show_ma"], cfg["show_volume"],
+        cfg["show_rsi"], cfg["show_macd"], cfg["show_bb"],
+    )
 
 with tab2:
     render_prediction(df_feat, y_test, y_pred, split, metrics, cfg["model_choice"], cfg["ticker"])
@@ -81,8 +95,10 @@ with tab2:
 with tab3:
     render_forecast(df_feat, future_dates, future_preds, metrics["RMSE"], cfg["ticker"], cfg["forecast_days"])
 
+with tab4:
+    render_peers(df_raw, cfg["ticker"], peers_data)
+
 st.markdown(
-    "<p style='text-align:center; color:#9ca3af; font-size:0.75rem; padding-top:1rem;'>"
-    "</p>",
+    "<p style='text-align:center; color:#9ca3af; font-size:0.75rem; padding-top:1rem;'></p>",
     unsafe_allow_html=True,
 )
