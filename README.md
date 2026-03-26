@@ -25,7 +25,8 @@ The app fetches historical stock data using **yfinance** and trains a machine le
 - numpy  
 - matplotlib  
 - scikit-learn  
-- yfinance  
+- yfinance
+- xgboost
 
 
 ---
